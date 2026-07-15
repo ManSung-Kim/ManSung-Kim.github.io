@@ -1,0 +1,74 @@
+[교육생 설정]
+- GitHub Pages 주소: https://[username].github.io
+- GitHub 저장소: https://github.com/[username]/[username].github.io.git
+- GitHub 토큰 파일: github_token.txt
+- 프로필 참고 자료: [CV.pdf 또는 없음]
+- 웹사이트 디자인 참고: [없음, 다크 테마, 메트릭스 느낌, 페이스북 등등]
+- 게임 추가 기능: [없음 또는 원하는 기능 - 랜덤하게 움직이는 적]
+
+
+[Step 7 - 전체 구현과 최초 배포]
+
+STEP1_ANALYSIS.md, AORR.md, MEMORY.md와 기존 코드를 읽고 작은 AORR·TDD 루프를 순서대로 실행해 전체 사이트를 완성해.
+
+역할:
+- Codex: 코드 분석과 최소 수정
+- Claude Code CLI Sonnet: 각 루프의 변경 전·후 테스트와 최종 검증
+- Codex는 Claude가 실행한 테스트를 중복 실행하지 않음
+- Claude 사용 불가 시에만 Codex가 수정과 테스트를 모두 수행
+
+먼저:
+1. Claude CLI 실행 가능 여부 확인
+2. Sonnet 5 사용 가능 여부 확인
+3. 불가능하면 사용 가능한 최신 Sonnet 사용
+4. 실제 모델명과 실행 모드를 MEMORY.md에 기록
+
+필수 범위:
+- 정적 HTML, CSS, JavaScript
+- Home, About, Contact
+- Projects·Experience·Research 중 확인 가능한 영역
+- 반응형 내비게이션과 Games 메뉴
+- 지렁이 게임:
+  시작, 이동, 음식, 성장, 점수, 충돌,
+  게임 오버, 일시정지, 재시작, 최고 점수
+- 방향키, WASD, 모바일 버튼
+- 반대 방향 방지
+- 중복 타이머 방지
+- 교육생 설정의 게임 추가 기능
+- 375px, 768px, 1440px 검증
+- 로컬 HTTP, 콘솔, 내부 링크, 상대 경로 검증
+
+각 루프:
+1. Claude가 변경 전 테스트
+2. Codex가 원인 하나를 최소 수정
+3. Claude가 동일 테스트 재실행
+4. 실패 시 Claude가 오류와 fingerprint 보고
+5. Codex가 최소 Retry
+6. Claude가 다시 검증
+7. Claude 전체 검증 통과 시 다음 루프로 이동
+
+Retry:
+- 오류당 최대 3회
+- 동일 fingerprint 2회면 중지
+- 한 Retry에서는 원인 하나와 최소 파일만 수정
+- 테스트 삭제·완화 금지
+
+기타 규칙:
+- 기존 콘텐츠 보존
+- 확인되지 않은 정보는 [사람 확인 필요]
+- MEMORY.md는 60줄 이내
+- 상세 로그는 AORR_LOG.md
+- 미완성 기능이 있으면 PASSED 처리 금지
+
+모든 로컬 검증이 통과하면:
+- 상태를 DEPLOY_APPROVAL_REQUIRED로 설정
+- 저장소, 변경 내용, 예상 URL을 보여주고 중지
+- 사용자 승인 전에는 commit, push, 배포 금지
+
+사용자 승인 후:
+1. 토큰·비밀정보 추적 여부 확인
+2. commit과 push
+3. GitHub Pages 배포
+4. HTTP 200 확인
+5. Claude가 배포본 회귀 테스트
+6. 통과 시 DEPLOYED

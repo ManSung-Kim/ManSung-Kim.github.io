@@ -1,0 +1,68 @@
+[교육생 설정]
+- GitHub Pages 주소: https://[username].github.io
+- GitHub 저장소: https://github.com/[username]/[username].github.io.git
+- GitHub 토큰 파일: github_token.txt
+- 프로필 참고 자료: [CV.pdf 또는 없음]
+- 웹사이트 디자인 참고: [없음, 다크 테마, 메트릭스 느낌, 페이스북 등등]
+- 게임 추가 기능: [없음 또는 원하는 기능 - 랜덤하게 움직이는 적]
+
+
+[Step 3 - Self-Correcting TDD 설계]
+
+AORR.md와 저장소 구조를 읽고 Verifier 중심 Self-Correcting TDD 루프를 설계해.
+
+기본 모드:
+- Codex = Worker: 코드 분석과 최소 수정
+- Claude Code CLI Sonnet = Verifier: 변경 전·후 테스트 실행
+- Codex는 Claude가 실행한 테스트를 중복 실행하지 않음
+
+먼저 확인할 것:
+1. `claude` 명령 사용 가능 여부
+2. 로그인 및 실행 가능 여부
+3. 사용 가능한 Sonnet 모델
+4. Sonnet 5가 실제 사용 가능하면 사용
+5. 불가능하면 사용 가능한 최신 Sonnet 모델 사용
+6. 실제 모델명을 AORR.md와 MEMORY.md에 기록
+7. Claude 사용 불가 시 CODEX_FALLBACK 모드 사용
+
+AORR.md에 `Self-Correcting TDD Loop`를 추가해.
+
+실행 순서:
+1. Claude가 변경 전 테스트 실행
+2. Claude가 실패 항목, 핵심 오류, 관련 파일, fingerprint 보고
+3. Codex가 원인 하나에 필요한 최소 코드만 수정
+4. Claude가 동일 테스트 재실행
+5. 실패 시 Claude가 새 결과와 fingerprint 보고
+6. Codex가 최소 수정 후 Claude에 재검증 요청
+7. Claude의 전체 테스트가 통과해야 PASSED
+
+검증 범위:
+- 파일 존재와 상대 경로
+- HTML 구조와 내부 링크
+- CSS 반응형
+- JavaScript 오류
+- 지렁이 게임 기능과 입력
+- 로컬 HTTP 응답
+- 375px, 768px, 1440px
+- GitHub Pages 호환성
+
+실패 기록:
+- 실행 주체와 모델
+- 명령
+- exit code
+- 핵심 오류
+- 관련 파일·라인
+- fingerprint
+- 최종 상태
+
+Retry:
+- 오류당 최대 3회
+- 동일 fingerprint 2회면 중지
+- 한 Retry에서는 원인 하나와 최소 파일만 수정
+- 테스트 삭제·완화 금지
+
+Fallback:
+- Claude CLI를 사용할 수 없을 때만 Codex가 수정과 테스트를 모두 수행
+- Fallback 이유와 사용 여부를 기록
+
+이 단계에서는 코드 수정, 테스트 실행, push, 배포를 하지 마.

@@ -1,0 +1,50 @@
+[교육생 설정]
+- GitHub Pages 주소: https://[username].github.io
+- GitHub 저장소: https://github.com/[username]/[username].github.io.git
+- GitHub 토큰 파일: github_token.txt
+- 프로필 참고 자료: [CV.pdf 또는 없음]
+- 웹사이트 디자인 참고: [없음, 다크 테마, 메트릭스 느낌, 페이스북 등등]
+- 게임 추가 기능: [없음 또는 원하는 기능 - 랜덤하게 움직이는 적]
+
+
+[Step 5 - 첫 개발 루프 정확히 1회 실행]
+
+STEP1_ANALYSIS.md, AORR.md, MEMORY.md와 기존 파일을 읽고 가장 안전한 첫 개발 루프를 정확히 1회 실행해.
+
+역할:
+- Claude Code CLI Sonnet: 변경 전·후 테스트
+- Codex: 테스트 결과에 따른 최소 코드 수정
+- Claude 사용 불가 시에만 Codex가 수정과 테스트를 모두 수행
+
+실행 순서:
+1. MEMORY.md와 Git 상태 확인
+2. Claude CLI와 사용 가능한 Sonnet 모델 확인
+3. Claude가 변경 전 Verifier 실행
+4. 이번 루프의 최소 완료 기준 하나 확정
+5. Codex가 필요한 최소 파일만 생성 또는 수정
+6. Claude가 동일 Verifier 재실행
+7. 결과를 MEMORY.md와 AORR_LOG.md에 기록
+8. 정확히 한 번의 Act 후 중지
+
+기본 후보:
+- 기존 콘텐츠를 보존
+- index.html, styles.css, script.js 연결
+- meta viewport
+- 기본 반응형 내비게이션
+- Games 영역 준비
+- 전체 게임은 아직 구현하지 않음
+
+제한:
+- Claude 검증 실패 후 두 번째 Codex 수정은 하지 마
+- 실패 시 RETRY_NEEDED 또는 HITL_REQUIRED로 기록
+- push와 배포 금지
+- MEMORY.md에는 한 줄 요약만 기록
+- 상세 내용은 AORR_LOG.md에 기록
+
+최종 보고:
+- 실행 모드와 Claude 모델
+- 선택한 루프
+- 변경 파일
+- Claude 변경 전·후 테스트 결과
+- 현재 상태
+- 다음 작업
