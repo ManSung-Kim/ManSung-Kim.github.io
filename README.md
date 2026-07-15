@@ -1,2 +1,1 @@
-# samsung-agent-education2
-samsung-agent-education
+# 삼성전자 MX 에이전트 교육용 자료입니다.
