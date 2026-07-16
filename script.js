@@ -25,5 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (gameRoot && window.SnakeGame) {
     window.snakeGame = new window.SnakeGame(gameRoot);
+    window.activeGame = window.snakeGame;
+  }
+
+  const doomRoot = document.querySelector('#doom-game');
+  if (doomRoot && window.DoomGame) {
+    window.doomGame = new window.DoomGame(doomRoot);
   }
 });

@@ -43,6 +43,7 @@
       this.cell = 24;
       this.deviceRatio = Math.max(1, window.devicePixelRatio || 1);
       this.resizeObserver = null;
+      window.activeGame = window.activeGame || this;
 
       this.reset(true);
       this.bindEvents();
@@ -65,7 +66,12 @@
     }
 
     bindEvents() {
+      this.root.addEventListener('pointerdown', () => {
+        window.activeGame = this;
+      });
+
       document.addEventListener('keydown', (event) => {
+        if (window.activeGame && window.activeGame !== this) return;
         const key = event.key.toLowerCase();
         if (key === 'arrowup' || key === 'w') return this.setDirection('up', true);
         if (key === 'arrowdown' || key === 's') return this.setDirection('down', true);
@@ -77,6 +83,7 @@
 
       this.controlButtons.forEach((button) => {
         button.addEventListener('click', () => {
+          window.activeGame = this;
           const action = button.dataset.action;
           if (action === 'start') this.start();
           if (action === 'pause') this.togglePause();
@@ -86,12 +93,14 @@
 
       this.padButtons.forEach((button) => {
         button.addEventListener('click', () => {
+          window.activeGame = this;
           const dir = button.dataset.dir;
           this.setDirection(dir, true);
         });
       });
 
       this.canvas.addEventListener('touchstart', (event) => {
+        window.activeGame = this;
         if (event.touches.length > 1) return;
         const touch = event.touches[0];
         this.touchStart = { x: touch.clientX, y: touch.clientY };
@@ -154,12 +163,14 @@
     }
 
     restart() {
+      window.activeGame = this;
       this.reset();
       this.start();
       this.setStatus('Restarted');
     }
 
     start() {
+      window.activeGame = this;
       if (this.gameOver) {
         this.reset();
       }

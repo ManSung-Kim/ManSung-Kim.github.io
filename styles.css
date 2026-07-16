@@ -273,6 +273,19 @@ h2 { font-size: clamp(1.5rem, 2vw, 2rem); }
   align-items: start;
 }
 
+.game-card {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(103, 255, 146, 0.12);
+}
+
+.doom-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+  gap: 1rem;
+  align-items: start;
+}
+
 .game-board {
   position: relative;
   min-width: 0;
@@ -292,6 +305,22 @@ h2 { font-size: clamp(1.5rem, 2vw, 2rem); }
     linear-gradient(90deg, transparent 95%, rgba(103, 255, 146, 0.08) 95%);
   background-size: 24px 24px;
   background-color: #020704;
+  touch-action: none;
+}
+
+.doom-board {
+  border-color: rgba(103, 196, 255, 0.16);
+  background: rgba(5, 10, 19, 0.36);
+}
+
+#doom-canvas {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(42, 70, 111, 0.34), rgba(11, 13, 20, 0.92)),
+    radial-gradient(circle at 50% 22%, rgba(145, 206, 255, 0.18), transparent 28%);
   touch-action: none;
 }
 
@@ -318,6 +347,30 @@ h2 { font-size: clamp(1.5rem, 2vw, 2rem); }
 #overlay-title {
   font-size: 1.4rem;
   color: var(--accent);
+}
+
+.doom-overlay {
+  background: rgba(6, 10, 19, 0.68);
+}
+
+.doom-card .section-head {
+  margin-bottom: 1rem;
+}
+
+.doom-panel {
+  gap: 0.85rem;
+}
+
+.doom-pad {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(56px, 1fr));
+  gap: 0.55rem;
+}
+
+.doom-pad .pad-btn {
+  min-width: 0;
+  min-height: 52px;
+  font-size: 0.95rem;
 }
 
 .game-panel {
@@ -413,11 +466,18 @@ h2 { font-size: clamp(1.5rem, 2vw, 2rem); }
 
 @media (max-width: 1000px) {
   .split-panel,
-  .game-layout {
+  .game-layout,
+  .doom-layout {
     grid-template-columns: 1fr;
   }
 
   .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .doom-pad {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

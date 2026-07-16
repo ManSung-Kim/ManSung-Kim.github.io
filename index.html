@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#06110a">
   <title>ManSung Kim | Professional Profile</title>
-  <meta name="description" content="정적 HTML, CSS, JavaScript로 만든 반응형 개인 프로필과 지렁이 게임 사이트입니다.">
+  <meta name="description" content="정적 HTML, CSS, JavaScript로 만든 반응형 개인 프로필과 게임 데모 사이트입니다.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -40,9 +40,7 @@
     <section id="about" class="panel split-panel">
       <div>
         <h2>About</h2>
-        <p>
-          일상 운영, 자세한 정리, 책임감 있는 진행을 바탕으로 사이트와 게임을 안정적으로 구성합니다.
-        </p>
+        <p>일상 운영, 자세한 정리, 책임감 있는 진행을 바탕으로 사이트와 게임을 안정적으로 구성합니다.</p>
       </div>
       <div class="info-card">
         <h3>Profile Tone</h3>
@@ -58,11 +56,11 @@
       <div class="card-grid">
         <article class="content-card">
           <h3>Responsive Portfolio Shell</h3>
-          <p>정적 HTML/CSS/JS로 구성한 개인 사이트와 매트릭스/프렉탈 스타일 UI 실험입니다.</p>
+          <p>정적 HTML/CSS/JS로 구성한 개인 사이트와 다양한 분위기의 배경 연출 실험입니다.</p>
         </article>
         <article class="content-card">
           <h3>Game Section</h3>
-          <p>키보드와 터치 입력을 함께 지원하는 지렁이 게임을 배치했습니다.</p>
+          <p>키보드와 터치 입력을 함께 지원하는 지렁이 게임과 Doom 데모를 배치했습니다.</p>
         </article>
         <article class="content-card">
           <h3>Content Strategy</h3>
@@ -89,7 +87,7 @@
       </div>
       <div class="info-card">
         <h3>Note</h3>
-        <p>세부 검증이 필요한 항목은 내부 점검 메모로 관리합니다.</p>
+        <p>세부 검증이 필요한 항목은 다음 반복 작업에서 보강합니다.</p>
       </div>
     </section>
 
@@ -134,9 +132,7 @@
             <button type="button" data-action="restart">Restart</button>
           </div>
 
-          <p class="hint">
-            키보드: 방향키 / WASD / Space / Enter / R
-          </p>
+          <p class="hint">키보드: 방향키 / WASD / Space / Enter / R</p>
 
           <div class="mobile-pad" aria-label="모바일 조작">
             <div></div>
@@ -151,6 +147,61 @@
           </div>
         </aside>
       </div>
+
+      <article class="game-card doom-card" id="doom-game">
+        <div class="section-head">
+          <h3>Doom</h3>
+          <span class="status-pill" id="doom-status" aria-live="polite">Ready</span>
+        </div>
+
+        <div class="doom-layout">
+          <div class="game-board doom-board">
+            <canvas id="doom-canvas" width="640" height="360" aria-label="Doom 포팅 게임"></canvas>
+            <div class="game-overlay doom-overlay" id="doom-overlay" hidden>
+              <p id="doom-overlay-title">Ready</p>
+              <p id="doom-overlay-text">Start를 눌러 미로를 탐험하고 적을 처치하세요.</p>
+            </div>
+          </div>
+
+          <aside class="game-panel doom-panel">
+            <div class="stat-grid" aria-label="Doom 상태">
+              <div class="stat">
+                <span class="stat-label">HP</span>
+                <strong id="doom-hp">100</strong>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Ammo</span>
+                <strong id="doom-ammo">24</strong>
+              </div>
+              <div class="stat">
+                <span class="stat-label">Kills</span>
+                <strong id="doom-kills">0</strong>
+              </div>
+              <div class="stat">
+                <span class="stat-label">State</span>
+                <strong id="doom-state">Idle</strong>
+              </div>
+            </div>
+
+            <div class="control-row">
+              <button type="button" data-doom-action="start">Start</button>
+              <button type="button" data-doom-action="pause">Pause</button>
+              <button type="button" data-doom-action="restart">Restart</button>
+              <button type="button" data-doom-action="shoot">Shoot</button>
+            </div>
+
+            <p class="hint">WASD 이동, 방향키 회전, Space 사격, Enter 재시작, P 일시정지</p>
+
+            <div class="doom-pad" aria-label="Doom 모바일 조작">
+              <button type="button" class="pad-btn" data-doom-hold="left">⟲</button>
+              <button type="button" class="pad-btn" data-doom-hold="up">▲</button>
+              <button type="button" class="pad-btn" data-doom-hold="shoot">Fire</button>
+              <button type="button" class="pad-btn" data-doom-hold="down">▼</button>
+              <button type="button" class="pad-btn" data-doom-hold="right">⟳</button>
+            </div>
+          </aside>
+        </div>
+      </article>
     </section>
 
     <section id="contact" class="panel split-panel">
@@ -170,6 +221,7 @@
   </footer>
 
   <script src="game.js"></script>
+  <script src="doom.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
