@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#06110a">
   <title>ManSung Kim | Professional Profile</title>
-  <meta name="description" content="매트릭스 감성의 정적 프로페셔널 웹사이트와 지렁이 게임이 있는 개인 사이트">
+  <meta name="description" content="정적 HTML, CSS, JavaScript로 만든 반응형 개인 프로필과 지렁이 게임 사이트입니다.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="matrix-bg" aria-hidden="true"></div>
+  <div class="fractal-bg" aria-hidden="true"></div>
   <header class="site-header">
     <a class="brand" href="#top">ManSung Kim</a>
     <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false">Menu</button>
@@ -27,10 +27,9 @@
   <main id="top" class="page-shell">
     <section id="home" class="hero panel">
       <p class="eyebrow">Residential Stewardship Specialist</p>
-      <h1>정돈된 감각으로 공간과 디지털 경험을 함께 다듬습니다.</h1>
+      <h1>정돈된 감각으로 공간과 경험을 함께 설계합니다.</h1>
       <p class="lead">
         이 사이트는 정적 HTML, CSS, JavaScript만으로 동작하는 반응형 개인 프로필입니다.
-        검증되지 않은 세부 이력은 넣지 않고, 필요한 곳은 <span class="placeholder">[사람 확인 필요]</span>로 남깁니다.
       </p>
       <div class="hero-actions">
         <a class="button primary" href="#games">Go to Games</a>
@@ -42,12 +41,12 @@
       <div>
         <h2>About</h2>
         <p>
-          차분한 운영, 섬세한 정리, 책임감 있는 진행을 바탕으로 사이트와 게임을 깔끔하게 구성합니다.
+          일상 운영, 자세한 정리, 책임감 있는 진행을 바탕으로 사이트와 게임을 안정적으로 구성합니다.
         </p>
       </div>
       <div class="info-card">
         <h3>Profile Tone</h3>
-        <p>전문적이고, 절제되어 있으며, 신뢰감 있는 인상.</p>
+        <p>과장되지 않으면서도 신뢰감 있는 분위기를 유지합니다.</p>
       </div>
     </section>
 
@@ -59,15 +58,15 @@
       <div class="card-grid">
         <article class="content-card">
           <h3>Responsive Portfolio Shell</h3>
-          <p>정적 HTML/CSS/JS로 구성된 개인 사이트 골격과 매트릭스 감성 인터페이스.</p>
+          <p>정적 HTML/CSS/JS로 구성한 개인 사이트와 매트릭스/프렉탈 스타일 UI 실험입니다.</p>
         </article>
         <article class="content-card">
           <h3>Game Section</h3>
-          <p>키보드와 터치 조작을 지원하는 지렁이 게임을 내장한 인터랙티브 영역.</p>
+          <p>키보드와 터치 입력을 함께 지원하는 지렁이 게임을 배치했습니다.</p>
         </article>
         <article class="content-card">
           <h3>Content Strategy</h3>
-          <p>CV가 없을 때도 사이트의 톤을 유지할 수 있도록 확인되지 않은 내용은 표시 관리.</p>
+          <p>CV가 없어도 사이트의 톤을 일관되게 보여주도록 문구를 정리했습니다.</p>
         </article>
       </div>
     </section>
@@ -75,11 +74,11 @@
     <section id="experience" class="panel split-panel">
       <div>
         <h2>Experience</h2>
-        <p>공개 가능한 경력만 정리합니다. 상세 항목은 이후 확인 후 보강합니다.</p>
+        <p>공개 가능한 경험만 짧게 남기고, 세부 내용은 필요할 때 추가할 수 있게 구성합니다.</p>
       </div>
       <div class="info-card">
         <h3>Focus</h3>
-        <p>운영, 정리, 반응형 UI, 게임 UX, 정적 배포.</p>
+        <p>기획, 정리, 반응형 UI, 게임 UX, 정적 배포.</p>
       </div>
     </section>
 
@@ -90,7 +89,7 @@
       </div>
       <div class="info-card">
         <h3>Note</h3>
-        <p>세부 검증이 필요한 항목은 <span class="placeholder">[사람 확인 필요]</span>로 표기합니다.</p>
+        <p>세부 검증이 필요한 항목은 내부 점검 메모로 관리합니다.</p>
       </div>
     </section>
 
@@ -130,28 +129,25 @@
           </div>
 
           <div class="control-row">
-            <button class="button primary control-button" type="button" data-action="start">Start</button>
-            <button class="button secondary control-button" type="button" data-action="pause">Pause</button>
-            <button class="button secondary control-button" type="button" data-action="restart">Restart</button>
+            <button type="button" data-action="start">Start</button>
+            <button type="button" data-action="pause">Pause</button>
+            <button type="button" data-action="restart">Restart</button>
           </div>
 
-          <div class="instructions">
-            <h3>Controls</h3>
-            <ul>
-              <li>방향키 또는 WASD로 이동</li>
-              <li>모바일 버튼으로 방향 제어</li>
-              <li>반대 방향 입력은 막아 둡니다</li>
-              <li>Pause와 Restart로 흐름을 제어합니다</li>
-            </ul>
-          </div>
+          <p class="hint">
+            키보드: 방향키 / WASD / Space / Enter / R
+          </p>
 
-          <div class="mobile-pad" aria-label="모바일 게임 조작">
-            <button class="pad-btn" type="button" data-dir="up">▲</button>
-            <div class="pad-middle">
-              <button class="pad-btn" type="button" data-dir="left">◀</button>
-              <button class="pad-btn" type="button" data-dir="down">▼</button>
-              <button class="pad-btn" type="button" data-dir="right">▶</button>
-            </div>
+          <div class="mobile-pad" aria-label="모바일 조작">
+            <div></div>
+            <button type="button" class="pad-btn" data-dir="up" aria-label="위로">▲</button>
+            <div></div>
+            <button type="button" class="pad-btn" data-dir="left" aria-label="왼쪽">◀</button>
+            <button type="button" class="pad-btn" data-action="restart" aria-label="재시작">↺</button>
+            <button type="button" class="pad-btn" data-dir="right" aria-label="오른쪽">▶</button>
+            <div></div>
+            <button type="button" class="pad-btn" data-dir="down" aria-label="아래">▼</button>
+            <div></div>
           </div>
         </aside>
       </div>
@@ -160,17 +156,17 @@
     <section id="contact" class="panel split-panel">
       <div>
         <h2>Contact</h2>
-        <p>공개 연락 정보는 추후 확인 후 추가합니다.</p>
+        <p>연락처와 링크는 추후 실제 값으로 교체할 수 있도록 단순하게 남겨둡니다.</p>
       </div>
       <div class="info-card">
-        <h3>Status</h3>
-        <p>배포 준비 완료, 게임 기능은 로컬 검증 후 GitHub Pages에 반영됩니다.</p>
+        <h3>Links</h3>
+        <p>GitHub Pages와 저장소를 중심으로 정적 공개를 유지합니다.</p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; <span id="year"></span> ManSung Kim</p>
+    <p>© <span id="year"></span> ManSung Kim</p>
   </footer>
 
   <script src="game.js"></script>

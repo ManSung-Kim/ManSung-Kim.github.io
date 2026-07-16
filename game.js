@@ -283,12 +283,16 @@
     showOverlay(title, text) {
       if (!this.overlay) return;
       this.overlay.hidden = false;
+      this.overlay.style.display = 'grid';
       if (this.overlayTitle) this.overlayTitle.textContent = title;
       if (this.overlayText) this.overlayText.textContent = text;
     }
 
     hideOverlay() {
-      if (this.overlay) this.overlay.hidden = true;
+      if (this.overlay) {
+        this.overlay.hidden = true;
+        this.overlay.style.display = 'none';
+      }
     }
 
     draw() {

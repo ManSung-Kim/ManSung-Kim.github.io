@@ -18,8 +18,10 @@ body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(circle at top, rgba(103, 255, 146, 0.08), transparent 35%),
-    linear-gradient(180deg, #031007 0%, var(--bg) 100%);
+    radial-gradient(circle at 12% 12%, rgba(255, 90, 155, 0.18), transparent 22%),
+    radial-gradient(circle at 85% 18%, rgba(80, 212, 255, 0.16), transparent 20%),
+    radial-gradient(circle at 50% 82%, rgba(255, 208, 92, 0.12), transparent 24%),
+    linear-gradient(180deg, #050414 0%, var(--bg) 100%);
   color: var(--text);
 }
 
@@ -32,21 +34,75 @@ button { font: inherit; }
   font-weight: 700;
 }
 
-.matrix-bg {
+.fractal-bg {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.18;
-  background-image:
-    linear-gradient(180deg, transparent 0 88%, rgba(103, 255, 146, 0.5) 88% 100%);
-  background-size: 2px 32px;
-  animation: drift 12s linear infinite;
-  mask-image: linear-gradient(180deg, transparent, #000 15%, #000 85%, transparent);
+  overflow: hidden;
+  opacity: 0.72;
+  mix-blend-mode: screen;
+  filter: saturate(1.3) contrast(1.1);
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 92, 92, 0.65) 0 6%, transparent 7%),
+    radial-gradient(circle at 80% 20%, rgba(92, 188, 255, 0.55) 0 7%, transparent 8%),
+    radial-gradient(circle at 55% 75%, rgba(162, 92, 255, 0.55) 0 8%, transparent 9%),
+    radial-gradient(circle at 45% 55%, rgba(84, 255, 164, 0.5) 0 10%, transparent 11%),
+    conic-gradient(from 10deg at 50% 50%,
+      rgba(255, 65, 160, 0.28),
+      rgba(255, 220, 95, 0.16),
+      rgba(85, 240, 255, 0.28),
+      rgba(182, 96, 255, 0.24),
+      rgba(255, 65, 160, 0.28));
+  background-size: 140% 140%, 160% 160%, 170% 170%, 180% 180%, 120% 120%;
+  animation: fractal-drift 28s linear infinite, fractal-rotate 40s linear infinite;
 }
 
-@keyframes drift {
-  from { background-position: 0 0; }
-  to { background-position: 0 320px; }
+.fractal-bg::before,
+.fractal-bg::after {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.18) 0 2%, transparent 3%),
+    radial-gradient(circle at 30% 30%, rgba(0, 255, 170, 0.18), transparent 35%),
+    radial-gradient(circle at 70% 25%, rgba(255, 95, 143, 0.16), transparent 30%),
+    radial-gradient(circle at 35% 75%, rgba(88, 164, 255, 0.18), transparent 32%),
+    radial-gradient(circle at 75% 70%, rgba(255, 196, 92, 0.18), transparent 28%);
+  filter: blur(32px);
+  opacity: 0.8;
+  transform-origin: center;
+}
+
+.fractal-bg::before {
+  animation: fractal-bloom 22s ease-in-out infinite alternate, fractal-spin 52s linear infinite;
+}
+
+.fractal-bg::after {
+  inset: -35%;
+  opacity: 0.5;
+  filter: blur(48px) hue-rotate(90deg);
+  animation: fractal-bloom 30s ease-in-out infinite alternate-reverse, fractal-spin 74s linear infinite reverse;
+}
+
+@keyframes fractal-drift {
+  from { background-position: 0% 0%, 100% 0%, 50% 100%, 0% 100%, 50% 50%; }
+  to { background-position: 100% 100%, 0% 100%, 100% 0%, 100% 50%, 0% 0%; }
+}
+
+@keyframes fractal-rotate {
+  from { filter: saturate(1.2) contrast(1.05) hue-rotate(0deg); }
+  to { filter: saturate(1.5) contrast(1.15) hue-rotate(360deg); }
+}
+
+@keyframes fractal-bloom {
+  from { transform: scale(0.82) rotate(0deg); opacity: 0.56; }
+  to { transform: scale(1.18) rotate(180deg); opacity: 0.86; }
+}
+
+@keyframes fractal-spin {
+  from { transform: rotate(0deg) scale(1); }
+  to { transform: rotate(360deg) scale(1.08); }
 }
 
 .site-header, .page-shell, .site-footer {
@@ -257,6 +313,10 @@ h2 { font-size: clamp(1.5rem, 2vw, 2rem); }
   border-radius: 14px;
   background: rgba(1, 7, 3, 0.72);
   backdrop-filter: blur(4px);
+}
+
+.game-overlay[hidden] {
+  display: none !important;
 }
 
 .game-overlay p {
